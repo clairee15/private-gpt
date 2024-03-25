@@ -29,15 +29,15 @@ WORKDIR /home/worker/app
 RUN mkdir local_data; chown worker local_data
 RUN mkdir models; chown worker models
 
-# RUN mkdir cache; chown -R worker cache
+RUN mkdir cache; chown -R worker cache
 # RUN mkdir cache; chmod a+rwX cache
-RUN mkdir cache; chown a+rwX cache
 
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
 COPY --chown=worker private_gpt/ private_gpt
 COPY --chown=worker fern/ fern
 COPY --chown=worker *.yaml *.md ./
 COPY --chown=worker scripts/ scripts
+COPY --chown=worker cache/ cache
 
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
