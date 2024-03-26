@@ -49,6 +49,7 @@ COPY debug.py .
 RUN python3 debug.py > output.txt
 CMD ["python", "debug.py"]
 
+ls /home/worker/app/.venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
 USER worker
