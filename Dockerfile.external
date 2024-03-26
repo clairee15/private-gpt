@@ -34,9 +34,9 @@ RUN mkdir local_data; chown worker local_data
 
 # Create necessary directories and set permissions
 RUN mkdir -p models/cache/ && chown -R worker models/cache/
-
-
 RUN chmod -R 777 models/cache/
+
+RUN chmod -R 777 .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
 
 # Copy files
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
