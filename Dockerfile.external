@@ -33,7 +33,7 @@ RUN mkdir local_data; chown worker local_data
 # RUN mkdir cache; chmod a+rwX cache
 
 # Create necessary directories and set permissions
-RUN mkdir -p models/cache/ && chown -R worker models/cache/
+RUN mkdir -p models/cache/ && chown -R u+rwx worker models/cache/
 
 
 # Copy files
