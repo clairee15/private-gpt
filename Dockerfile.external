@@ -36,7 +36,7 @@ RUN mkdir local_data; chown worker local_data
 RUN mkdir -p models/cache/ && chown -R worker models/cache/
 
 
-# RUN chmod -R 777 models/cache/
+RUN chmod -R 777 models/cache/
 
 # Copy files
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
