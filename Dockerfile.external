@@ -38,6 +38,7 @@ RUN chmod -R 777 models/cache/
 
 RUN mkdir -p .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/ && chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
 RUN chmod -R 777 .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
+RUN chmod u+x base.py
 
 # Copy files
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
