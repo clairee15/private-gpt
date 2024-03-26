@@ -34,13 +34,18 @@ RUN mkdir local_data; chown worker local_data
 # RUN mkdir cache; chown -R worker /home/worker/app/models/cache
 
 # Create necessary directories and set permissions
-RUN mkdir -p models/cache && chown -R worker models/cache
+RUN mkdir -p models/cache && chown -R worker:worker models/cache
 
+# Change to worker user to perform subsequent operations
+USER worker
+
+# Copy files
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
 COPY --chown=worker private_gpt/ private_gpt
 COPY --chown=worker fern/ fern
 COPY --chown=worker *.yaml *.md ./
 COPY --chown=worker scripts/ scripts
+
 
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
