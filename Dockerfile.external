@@ -10,12 +10,18 @@ ENV PATH=".venv/bin/:$PATH"
 # https://python-poetry.org/docs/configuration/#virtualenvsin-project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
 
+RUN apt-get update && \
+    apt-get install -y build-essential
+
+
 FROM base as dependencies
 WORKDIR /home/worker/app
 COPY pyproject.toml poetry.lock ./
 
+pip install --upgrade poetry
+
 RUN poetry install --extras "ui vector-stores-qdrant"
-RUN poetry install --extras llms-llama-cpp
+RUN poetry install --extras "llms-llama-cpp"
 
 FROM base as app
 
