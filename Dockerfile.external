@@ -10,8 +10,8 @@ ENV PATH=".venv/bin/:$PATH"
 # https://python-poetry.org/docs/configuration/#virtualenvsin-project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
 
-RUN apt-get update && \
-    apt-get install -y build-essential
+#RUN apt-get update && apt-get install -y build-essential
+RUN yum install -y gcc gcc-c++ make
 
 
 FROM base as dependencies
