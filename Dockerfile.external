@@ -6,6 +6,7 @@ RUN python3 -m pipx ensurepath
 RUN pipx install poetry
 ENV PATH="/root/.local/bin:$PATH"
 ENV PATH=".venv/bin/:$PATH"
+ENV HOME="/home"
 
 # https://python-poetry.org/docs/configuration/#virtualenvsin-project
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
