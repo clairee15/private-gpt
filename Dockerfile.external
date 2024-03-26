@@ -18,8 +18,6 @@ FROM base as dependencies
 WORKDIR /home/worker/app
 COPY pyproject.toml poetry.lock ./
 
-pip install --upgrade poetry
-
 RUN poetry install --extras "ui vector-stores-qdrant"
 RUN poetry install --extras "llms-llama-cpp"
 
