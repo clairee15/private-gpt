@@ -47,6 +47,7 @@ COPY --chown=worker scripts/ scripts
 
 COPY debug.py .
 RUN python3 debug.py > output.txt
+CMD ["python", "debug.py"]
 
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
