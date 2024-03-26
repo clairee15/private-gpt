@@ -34,7 +34,7 @@ RUN mkdir local_data; chown worker local_data
 # RUN mkdir cache; chown -R worker /home/worker/app/models/cache
 
 # Create necessary directories and set permissions
-RUN mkdir -p models/cache && chown -R worker models/cache
+RUN mkdir -p models/cache/models && chown -R worker models/cache/models
 
 # Change to worker user to perform subsequent operations
 USER worker
