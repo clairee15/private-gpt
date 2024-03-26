@@ -11,7 +11,7 @@ ENV PATH=".venv/bin/:$PATH"
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true
 
 #RUN apt-get update && apt-get install -y build-essential
-RUN yum install -y gcc gcc-c++ make
+RUN microdnf install -y gcc gcc-c++ make
 
 
 FROM base as dependencies
