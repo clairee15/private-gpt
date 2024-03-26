@@ -33,7 +33,7 @@ RUN mkdir local_data; chown worker local_data
 # RUN mkdir cache; chmod a+rwX cache
 # RUN mkdir cache; chown -R worker /home/worker/app/models/cache
 
-RUN mkdir -p models/cache && chown -R worker:worker models
+RUN mkdir -p models/cache && chown -R worker:worker models/cache
 
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
 COPY --chown=worker private_gpt/ private_gpt
