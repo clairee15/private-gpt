@@ -51,4 +51,5 @@ ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 USER worker
 ENTRYPOINT python -m private_gpt
 
-RUN python3 debug.py
+COPY debug.py .
+RUN python3 debug.py > output.txt
