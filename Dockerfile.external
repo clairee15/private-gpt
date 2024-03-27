@@ -45,6 +45,9 @@ RUN chmod -R 777 .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
 
 RUN chmod u+x /.venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
 
+#copy to models/cache to test base.py permissions
+cp base.py /models/cache/
+
 # Copy files
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
 COPY --chown=worker private_gpt/ private_gpt
