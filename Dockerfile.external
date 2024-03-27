@@ -43,6 +43,8 @@ RUN poetry run python scripts/setup
 
 
 # Copy files
+COPY --chown=worker /.venv/lib/python3.11/site-packages/pandas/pyproject.toml /home/worker/app/pyproject.toml
+
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
 COPY --chown=worker private_gpt/ private_gpt
 COPY --chown=worker fern/ fern
