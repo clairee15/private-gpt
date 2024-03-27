@@ -18,7 +18,7 @@ COPY pyproject.toml poetry.lock ./
 
 RUN apt-get update && apt-get install -y gcc g++ make
 
-RUN poetry install --extras "ui vector-stores-qdrant llms-llama-cpp"
+RUN poetry install --extras "embeddings-huggingface ui vector-stores-qdrant llms-llama-cpp"
 
 FROM base as app
 
@@ -35,17 +35,11 @@ RUN mkdir local_data; chown worker local_data
 # Create necessary directories and set permissions
 RUN mkdir -p models/cache/ && chown -R worker models/cache/
 RUN chmod -R 777 models/cache/
-
-RUN chmod -R 777 .
-
 RUN mkdir -p .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/ && chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
 RUN chmod -R 775 .
 
-#cannot access
-# RUN chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
 
-
-# RUN chmod u+x .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
+RUN poetry run python scripts/setup
 
 
 # Copy files
@@ -58,4 +52,5 @@ COPY --chown=worker scripts/ scripts
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
 USER worker
-ENTRYPOINT python -m private_gpt
+# ENTRYPOINT python -m private_gpt
+ENTRYPOINT ["sh", "-c", "PGPT_PROFILES=local make run"]
