@@ -41,7 +41,7 @@ RUN chmod -R 775 .
 
 RUN mkdir -p .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
 RUN chmod -R 777 .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
-RUN chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
+# RUN chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
 
 RUN chmod u+x /.venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
 
