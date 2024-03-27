@@ -39,21 +39,13 @@ RUN chmod -R 777 models/cache/
 
 RUN chmod -R 775 .
 
-WORKDIR /home/worker/app/.venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp
-# RUN mkdir -p .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/ && 
-
-chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
+RUN mkdir -p .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/ && chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
 RUN chmod -R 777 .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
 
 #cannot access
 # RUN chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
 # RUN chmod u+x .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
 
-# copy to models/cache to test base.py permissions
-# COPY base.py .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/* models/cache/
-
-
-WORKDIR /home/worker/app
 
 # Copy files
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
