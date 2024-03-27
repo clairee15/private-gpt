@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y gcc g++ make
 
 RUN poetry install --extras "ui vector-stores-qdrant llms-llama-cpp"
 
+poetry run python scripts/setup
 
 FROM base as app
 
