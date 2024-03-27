@@ -40,7 +40,7 @@ RUN chmod -R 777 models/cache/
 RUN chmod -R 777 .
 
 RUN mkdir -p .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/ && chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/
-RUN chmod +x .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
+RUN chmod -R 775 .
 
 #cannot access
 # RUN chown -R worker .venv/lib/python3.11/site-packages/llama_index/llms/llama_cpp/base.py
